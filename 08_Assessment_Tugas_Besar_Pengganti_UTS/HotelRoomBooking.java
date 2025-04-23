@@ -31,11 +31,22 @@ public class HotelRoomBooking {
 
     public void cetakDetailPemesanan() {
         System.out.println("===== DETAIL PEMESANAN KAMAR =====");
+        cetakInfoTamu();
+        cetakInfoKamar();
+        cetakInfoPembayaran();
+        System.out.println("===================================");
+    }
+    
+    // Tambahkan di bawah ini
+    private void cetakInfoTamu() {
         System.out.println("Nama Pemesan : " + guestInfo.getNama());
         System.out.println("Jenis Kelamin: " + guestInfo.getJenisKelamin());
         System.out.println("No. KTP      : " + guestInfo.getNomorKTP());
         System.out.println("Telepon      : " + guestInfo.getNomorTelepon());
         System.out.println("Email        : " + guestInfo.getEmail());
+    }
+    
+    private void cetakInfoKamar() {
         System.out.println("Jenis Kamar  : " + jenisKamar);
         System.out.println("Jumlah Tamu  : " + jumlahTamu);
         System.out.println("Jumlah Malam : " + jumlahMalam);
@@ -43,19 +54,15 @@ public class HotelRoomBooking {
         System.out.println("Check-in     : " + tanggalCheckin);
         System.out.println("Check-out    : " + tanggalCheckout);
         System.out.println("Status Aktif : " + statusAktif);
+    }
+    
+    private void cetakInfoPembayaran() {
         System.out.println("Voucher      : " + kodeVoucher);
         System.out.println("Sudah Dibayar: " + sudahDibayar);
         System.out.println("Total Biaya  : Rp " + hitungTotalBiaya());
         System.out.println("Tipe Tamu    : " + klasifikasiTamu());
-        System.out.println("===================================");
-    }
-
-    public void redeemVoucher(String kode) {
-    }
-
-    public void kirimEmailKonfirmasi() {
-    }
-
+    }    
+    
     public double hitungTotalBiaya() {
         double total = hargaPerMalam * jumlahMalam;
         if (jumlahTamu > 2) {
