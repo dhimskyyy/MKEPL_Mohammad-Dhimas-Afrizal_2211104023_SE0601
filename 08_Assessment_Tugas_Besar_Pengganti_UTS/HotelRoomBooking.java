@@ -64,18 +64,26 @@ public class HotelRoomBooking {
     }    
     
     public double hitungTotalBiaya() {
-        double total = hargaPerMalam * jumlahMalam;
-        if (jumlahTamu > 2) {
-            total += (jumlahTamu - 2) * 100000;
-        }
-        if (kodeVoucher != null && kodeVoucher.length() > 3) {
-            total -= 50000;
-        }
+        double total = hitungBiayaDasar();
+        total += tambahBiayaTambahanTamu();
+        total -= diskonVoucher();
         if (!statusAktif) {
             total = 0;
         }
         return total;
     }
+    
+    private double hitungBiayaDasar() {
+        return hargaPerMalam * jumlahMalam;
+    }
+    
+    private double tambahBiayaTambahanTamu() {
+        return (jumlahTamu > 2) ? (jumlahTamu - 2) * 100000 : 0;
+    }
+    
+    private double diskonVoucher() {
+        return (kodeVoucher != null && kodeVoucher.length() > 3) ? 50000 : 0;
+    }    
 
     public String klasifikasiTamu() {
         if (jumlahTamu == 1)
