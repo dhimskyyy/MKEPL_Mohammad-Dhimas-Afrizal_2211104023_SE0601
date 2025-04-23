@@ -61,6 +61,14 @@ public class HotelRoomBooking {
         System.out.println("Sudah Dibayar: " + sudahDibayar);
         System.out.println("Total Biaya  : Rp " + hitungTotalBiaya());
         System.out.println("Tipe Tamu    : " + klasifikasiTamu());
+    }
+    
+    public void redeemVoucher(String kode) {
+        // TODO: Implementasi redeem voucher
+    }
+    
+    public void kirimEmailKonfirmasi() {
+        // TODO: Implementasi pengiriman email konfirmasi
     }    
     
     public double hitungTotalBiaya() {
@@ -135,4 +143,56 @@ public class HotelRoomBooking {
     public void setSudahDibayar(boolean sudahDibayar) {
         this.sudahDibayar = sudahDibayar;
     }
+    public static class Builder {
+        private GuestInfo guestInfo;
+        private String jenisKamar;
+        private int jumlahTamu;
+        private int jumlahMalam;
+        private double hargaPerMalam;
+        private Date tanggalCheckin;
+        private Date tanggalCheckout;
+        private boolean statusAktif = true;
+        private String kodeVoucher;
+        private boolean sudahDibayar = false;
+    
+        public Builder(GuestInfo guestInfo, String jenisKamar, int jumlahTamu, int jumlahMalam, double hargaPerMalam) {
+            this.guestInfo = guestInfo;
+            this.jenisKamar = jenisKamar;
+            this.jumlahTamu = jumlahTamu;
+            this.jumlahMalam = jumlahMalam;
+            this.hargaPerMalam = hargaPerMalam;
+        }
+    
+        public Builder setTanggalCheckin(Date tanggalCheckin) {
+            this.tanggalCheckin = tanggalCheckin;
+            return this;
+        }
+    
+        public Builder setTanggalCheckout(Date tanggalCheckout) {
+            this.tanggalCheckout = tanggalCheckout;
+            return this;
+        }
+    
+        public Builder setStatusAktif(boolean statusAktif) {
+            this.statusAktif = statusAktif;
+            return this;
+        }
+    
+        public Builder setKodeVoucher(String kodeVoucher) {
+            this.kodeVoucher = kodeVoucher;
+            return this;
+        }
+    
+        public Builder setSudahDibayar(boolean sudahDibayar) {
+            this.sudahDibayar = sudahDibayar;
+            return this;
+        }
+    
+        public HotelRoomBooking build() {
+            return new HotelRoomBooking(
+                guestInfo, jenisKamar, jumlahTamu, jumlahMalam, hargaPerMalam,
+                tanggalCheckin, tanggalCheckout, statusAktif, kodeVoucher, sudahDibayar
+            );
+        }
+    }    
 }
