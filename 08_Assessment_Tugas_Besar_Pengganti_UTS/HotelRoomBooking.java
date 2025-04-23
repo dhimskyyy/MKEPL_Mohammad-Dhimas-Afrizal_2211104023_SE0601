@@ -29,10 +29,10 @@ public class HotelRoomBooking {
         System.out.println("Jumlah Tamu  : " + bookingDetails.getJumlahTamu());
         System.out.println("Jumlah Malam : " + bookingDetails.getJumlahMalam());
         System.out.println("Harga/Malam  : " + bookingDetails.getHargaPerMalam());
-        System.out.println("Check-in     : " + bookingDetails.getTanggalCheckin());
-        System.out.println("Check-out    : " + bookingDetails.getTanggalCheckout());
+        System.out.println("Check-in     : " + bookingDetails.getTanggalBooking().getCheckin());
+        System.out.println("Check-out    : " + bookingDetails.getTanggalBooking().getCheckout());
         System.out.println("Status Aktif : " + bookingDetails.isStatusAktif());
-    }
+    }    
 
     private void cetakInfoPembayaran() {
         System.out.println("Voucher      : " + (bookingDetails.getVoucher() != null ? bookingDetails.getVoucher().getKode() : "-"));
